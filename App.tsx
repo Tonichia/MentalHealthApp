@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RevenueCatService } from './revenuecat';
 import { SubscriptionProvider } from './SubscriptionContext';
 import { HomeScreen } from './HomeScreen';
@@ -16,6 +17,10 @@ import { AuthScreen } from './AuthScreen';
 import { WelcomeScreen } from './WelcomeScreen';
 import { supabase } from './supabase';
 import { Session } from '@supabase/supabase-js';
+import * as SplashScreen from 'expo-splash-screen';
+
+// Prevent the splash screen from auto-hiding until our session is loaded
+SplashScreen.preventAutoHideAsync();
 
 export type RootStackParamList = {
   Welcome: undefined;
@@ -56,33 +61,35 @@ export default function App() {
   if (!isReady) return null;
 
   return (
-    <SubscriptionProvider>
-      <NavigationContainer>
-        <Stack.Navigator>
-          {!session ? (
-            <>
-              <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
-              <Stack.Screen name="Auth" component={AuthScreen} options={{ title: '', headerTransparent: true, headerBackTitleVisible: false, headerTintColor: '#0F172A' }} />
-            </>
-          ) : (
-            <>
-              <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-              <Stack.Screen name="Paywall" component={PaywallScreen} options={{ presentation: 'modal', headerShown: false }} />
-              <Stack.Screen name="Plans" component={PlansScreen} options={{ title: 'Self-Help Plans' }} />
-              <Stack.Screen name="Connections" component={ConnectionsScreen} options={{ title: 'Healthy Connections' }} />
-              <Stack.Screen name="Stories" component={StoriesScreen} options={{ title: 'Positive Stories' }} />
-              <Stack.Screen name="PlanDetail" component={PlanDetailScreen} options={{ title: 'Plan Overview', headerBackTitle: 'Back' }} />
-              <Stack.Screen 
-                name="GroupChat" 
-                component={GroupChatScreen} 
-                options={({ route }) => ({ title: route.params.groupName, headerBackTitle: 'Back' })} 
-              />
-              <Stack.Screen name="StoryDetail" component={StoryDetailScreen} options={{ title: 'Story', headerBackTitle: 'Back' }} />
-            </>
-          )}
-        </Stack.Navigator>
-        <StatusBar style="auto" />
-      </NavigationContainer>
-    </SubscriptionProvider>
+    <SafeAreaProvider>
+      <SubscriptionProvider>
+        <NavigationContainer>
+          <Stack.Navigator>
+            {!session ? (
+              <Stack.Group>
+                <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="Auth" component={AuthScreen} options={{ title: '', headerTransparent: true, headerBackVisible: false, headerTintColor: '#261A1A' }} />
+              </Stack.Group>
+            ) : (
+              <Stack.Group>
+                <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="Paywall" component={PaywallScreen} options={{ presentation: 'modal', headerShown: false }} />
+                <Stack.Screen name="Plans" component={PlansScreen} options={{ title: 'Self-Help Plans' }} />
+                <Stack.Screen name="Connections" component={ConnectionsScreen} options={{ title: 'Healthy Connections' }} />
+                <Stack.Screen name="Stories" component={StoriesScreen} options={{ title: 'Positive Stories' }} />
+                <Stack.Screen name="PlanDetail" component={PlanDetailScreen} options={{ title: 'Plan Overview', headerBackTitle: 'Back' }} />
+                <Stack.Screen
+                  name="GroupChat"
+                  component={GroupChatScreen}
+                  options={({ route }) => ({ title: route.params.groupName, headerBackTitle: 'Back' })}
+                />
+                <Stack.Screen name="StoryDetail" component={StoryDetailScreen} options={{ title: 'Story', headerBackTitle: 'Back' }} />
+              </Stack.Group>
+            )}
+          </Stack.Navigator>
+          <StatusBar style="auto" />
+        </NavigationContainer>
+      </SubscriptionProvider>
+    </SafeAreaProvider>
   );
 }

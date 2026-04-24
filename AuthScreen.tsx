@@ -11,7 +11,7 @@ export const AuthScreen = () => {
 
   async function signInWithEmail() {
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
     if (error) Alert.alert('Error', error.message);
     setLoading(false);
   }
@@ -19,7 +19,7 @@ export const AuthScreen = () => {
   async function signUpWithEmail() {
     setLoading(true);
     const { error } = await supabase.auth.signUp({
-      email,
+      email: email.trim(),
       password,
       options: { data: { name: name.trim() } },
     });
@@ -37,7 +37,7 @@ export const AuthScreen = () => {
       return;
     }
     setLoading(true);
-    const { error } = await supabase.auth.resetPasswordForEmail(email);
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim());
     if (error) {
       Alert.alert('Error', error.message);
     } else {
@@ -58,7 +58,7 @@ export const AuthScreen = () => {
           <View style={styles.logoMark}>
             <Text style={styles.logoEmoji}>🧠</Text>
           </View>
-          <Text style={styles.brandName}>Mind Matter</Text>
+          <Text style={styles.brandName}>Mind Matter Wellness</Text>
           <Text style={styles.brandTagline}>Your premium mental health companion</Text>
         </View>
 
@@ -138,7 +138,7 @@ export const AuthScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: '#F8FAFC' },
+  safeArea: { flex: 1, backgroundColor: '#FCF9F3' },
   scrollContent: { paddingHorizontal: 24, paddingBottom: 40, flexGrow: 1 },
 
   // Brand header
@@ -147,19 +147,19 @@ const styles = StyleSheet.create({
     width: 76,
     height: 76,
     borderRadius: 38,
-    backgroundColor: '#0F172A',
+    backgroundColor: '#261A1A',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
-    shadowColor: '#0F172A',
+    shadowColor: '#261A1A',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.2,
     shadowRadius: 16,
     elevation: 6,
   },
   logoEmoji: { fontSize: 34 },
-  brandName: { fontSize: 26, fontWeight: '900', color: '#0F172A', letterSpacing: -0.5, marginBottom: 4 },
-  brandTagline: { fontSize: 14, color: '#94A3B8', fontWeight: '500' },
+  brandName: { fontSize: 26, fontWeight: '600', fontFamily: 'serif', color: '#261A1A', letterSpacing: -0.5, marginBottom: 4 },
+  brandTagline: { fontSize: 14, color: '#4E4444', fontWeight: '500' },
 
   // Form card
   card: {
@@ -173,35 +173,35 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
     elevation: 4,
     borderWidth: 1,
-    borderColor: '#F1F5F9',
+    borderColor: '#D2C3C3',
   },
-  cardTitle: { fontSize: 22, fontWeight: '800', color: '#0F172A', marginBottom: 6, letterSpacing: -0.3 },
-  cardSubtitle: { fontSize: 14, color: '#64748B', marginBottom: 24, lineHeight: 21 },
+  cardTitle: { fontSize: 22, fontWeight: '600', fontFamily: 'serif', color: '#261A1A', marginBottom: 6, letterSpacing: -0.3 },
+  cardSubtitle: { fontSize: 14, color: '#4E4444', marginBottom: 24, lineHeight: 21 },
   input: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#FDFBF7',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: '#D2C3C3',
     paddingVertical: 14,
     paddingHorizontal: 16,
     borderRadius: 14,
     fontSize: 16,
-    color: '#0F172A',
+    color: '#1C1C18',
     marginBottom: 14,
   },
   forgotButton: { alignSelf: 'flex-end', marginBottom: 16, marginTop: -6 },
-  forgotText: { color: '#2563EB', fontSize: 13, fontWeight: '600' },
+  forgotText: { color: '#8B4E3D', fontSize: 13, fontWeight: '600' },
   primaryButton: {
-    backgroundColor: '#0F172A',
+    backgroundColor: '#261A1A',
     paddingVertical: 16,
     borderRadius: 14,
     alignItems: 'center',
     marginTop: 4,
   },
-  primaryButtonLoading: { backgroundColor: '#64748B' },
+  primaryButtonLoading: { backgroundColor: '#807474' },
   primaryButtonText: { color: '#fff', fontSize: 16, fontWeight: '700' },
 
   // Switch row
   switchRow: { alignItems: 'center', paddingVertical: 14 },
-  switchText: { color: '#64748B', fontSize: 14 },
-  switchLink: { color: '#0F172A', fontWeight: '800' },
+  switchText: { color: '#807474', fontSize: 14 },
+  switchLink: { color: '#261A1A', fontWeight: '800' },
 });

@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "MentalHealthApp",
-    "slug": "MentalHealthApp",
+    "name": "Mind Matter Wellness",
+    "slug": "mind-matter-wellness",
     "version": "1.0.0",
+    "scheme": "mind-matter-wellness",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -10,10 +11,16 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FCF9F3"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.therapyclips.mindmatterwellness",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow Mind Matter Wellness to access your camera to take a profile picture.",
+        "NSPhotoLibraryUsageDescription": "Allow Mind Matter Wellness to access your photo library to select a profile picture."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -21,10 +28,15 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.therapyclips.mindmatterwellness",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-image-picker"
+    ]
   }
 }

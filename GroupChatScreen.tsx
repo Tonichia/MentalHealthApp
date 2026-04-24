@@ -100,7 +100,7 @@ export const GroupChatScreen = () => {
       >
         {isLoading ? (
           <View style={styles.loadingContainer}>
-            <ActivityIndicator size="large" color="#0F172A" />
+            <ActivityIndicator size="large" color="#261A1A" />
             <Text style={styles.loadingText}>Loading messages...</Text>
           </View>
         ) : (
@@ -145,11 +145,11 @@ export const GroupChatScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: '#F8FAFC' },
+  safeArea: { flex: 1, backgroundColor: '#FCF9F3' },
   container: { flex: 1 },
 
   loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 12 },
-  loadingText: { fontSize: 14, color: '#94A3B8', fontWeight: '500' },
+  loadingText: { fontSize: 14, color: '#807474', fontWeight: '500' },
 
   chatContainer: { padding: 16, gap: 6, flexGrow: 1 },
 
@@ -161,65 +161,65 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: '#0F172A',
+    backgroundColor: '#261A1A',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  senderInitial: { color: '#F8FAFC', fontSize: 12, fontWeight: '800' },
+  senderInitial: { color: '#FCF9F3', fontSize: 12, fontWeight: '800' },
   avatarSpacer: { width: 30 },
 
   bubble: { maxWidth: '75%', paddingHorizontal: 14, paddingVertical: 10, borderRadius: 20 },
-  myBubble: { backgroundColor: '#0F172A', borderBottomRightRadius: 4 },
+  myBubble: { backgroundColor: '#261A1A', borderBottomRightRadius: 4 },
   theirBubble: {
     backgroundColor: '#fff',
     borderBottomLeftRadius: 4,
-    shadowColor: '#000',
+    shadowColor: '#261A1A',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.06,
     shadowRadius: 4,
     elevation: 2,
     borderWidth: 1,
-    borderColor: '#F1F5F9',
+    borderColor: '#D2C3C3',
   },
-  senderName: { fontSize: 11, fontWeight: '700', color: '#94A3B8', marginBottom: 4 },
+  senderName: { fontSize: 11, fontWeight: '700', color: '#807474', marginBottom: 4 },
   messageText: { fontSize: 15, lineHeight: 22 },
-  myText: { color: '#F8FAFC' },
-  theirText: { color: '#0F172A' },
+  myText: { color: '#FCF9F3' },
+  theirText: { color: '#1C1C18' },
 
   emptyChat: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 80, gap: 8 },
   emptyChatIcon: { fontSize: 44 },
-  emptyChatText: { fontSize: 16, fontWeight: '700', color: '#64748B' },
-  emptyChatSub: { fontSize: 14, color: '#94A3B8' },
+  emptyChatText: { fontSize: 16, fontWeight: '700', color: '#4E4444' },
+  emptyChatSub: { fontSize: 14, color: '#807474' },
 
   inputBar: {
     flexDirection: 'row',
     padding: 12,
     backgroundColor: '#fff',
     borderTopWidth: 1,
-    borderColor: '#F1F5F9',
+    borderColor: '#D2C3C3',
     alignItems: 'flex-end',
     gap: 10,
   },
   input: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#FDFBF7',
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: 24,
     fontSize: 15,
-    color: '#0F172A',
+    color: '#1C1C18',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: '#D2C3C3',
     maxHeight: 100,
   },
   sendButton: {
     width: 42,
     height: 42,
     borderRadius: 21,
-    backgroundColor: '#0F172A',
+    backgroundColor: '#261A1A',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  sendButtonDisabled: { backgroundColor: '#E2E8F0' },
-  sendIcon: { color: '#F8FAFC', fontSize: 18, fontWeight: '800' },
+  sendButtonDisabled: { backgroundColor: '#EBE8E2' },
+  sendIcon: { color: '#FCF9F3', fontSize: 18, fontWeight: '800' },
 });

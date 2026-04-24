@@ -1,6 +1,21 @@
 import 'react-native-url-polyfill/auto';
 import { createClient } from '@supabase/supabase-js';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { storage } from './storage';
+
+const supabaseStorage = {
+  getItem: (key: string) => {
+    const value = storage.getString(key);
+    return Promise.resolve(value ?? null);
+  },
+  setItem: (key: string, value: string) => {
+    storage.set(key, value);
+    return Promise.resolve();
+  },
+  removeItem: (key: string) => {
+    storage.delete(key);
+    return Promise.resolve();
+  },
+};
 
 // Replace these with your actual Supabase URL and Anon Key
 const supabaseUrl = 'https://fnlpcstifyjrjgluxvlf.supabase.co';
@@ -8,7 +23,7 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
-    storage: AsyncStorage,
+    storage: supabaseStorage,
     autoRefreshToken: true,
     persistSession: true,
     detectSessionInUrl: false,

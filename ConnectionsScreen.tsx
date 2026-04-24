@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from './App';
 
 const groups = [
   { id: 1, name: 'Anxiety Support Group', members: 128, active: true, icon: '🍃' },
@@ -15,10 +13,8 @@ const professionals = [
   { id: 2, name: 'Mark Thompson', role: 'Therapist, LCSW', availability: 'Next Available: Tomorrow', availableNow: false },
 ];
 
-type ConnectionsScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Connections'>;
-
 export const ConnectionsScreen = () => {
-  const navigation = useNavigation<ConnectionsScreenNavigationProp>();
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -88,11 +84,11 @@ export const ConnectionsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: '#F8FAFC' },
+  safeArea: { flex: 1, backgroundColor: '#FCF9F3' },
   container: { flex: 1, padding: 20 },
-  headerTitle: { fontSize: 26, fontWeight: '800', color: '#0F172A', marginBottom: 4, letterSpacing: -0.5 },
-  headerSubtitle: { fontSize: 15, color: '#64748B', marginBottom: 24 },
-  sectionLabel: { fontSize: 11, fontWeight: '800', color: '#94A3B8', letterSpacing: 1.5, marginBottom: 14 },
+  headerTitle: { fontSize: 26, fontWeight: '600', fontFamily: 'serif', color: '#261A1A', marginBottom: 4, letterSpacing: -0.5 },
+  headerSubtitle: { fontSize: 15, color: '#4E4444', marginBottom: 24 },
+  sectionLabel: { fontSize: 11, fontWeight: '800', color: '#807474', letterSpacing: 1.5, marginBottom: 14 },
   listContainer: { gap: 14, marginBottom: 8 },
 
   card: {
@@ -101,40 +97,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 16,
     borderRadius: 20,
-    shadowColor: '#94A3B8',
+    shadowColor: '#261A1A',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 3,
     borderWidth: 1,
-    borderColor: '#F1F5F9',
+    borderColor: '#D2C3C3',
   },
 
   // Group cards
   cardLeft: { flexDirection: 'row', alignItems: 'center', flex: 1 },
-  groupIcon: { width: 46, height: 46, borderRadius: 23, backgroundColor: '#F1F5F9', alignItems: 'center', justifyContent: 'center', marginRight: 12 },
+  groupIcon: { width: 46, height: 46, borderRadius: 23, backgroundColor: '#F0EEE8', alignItems: 'center', justifyContent: 'center', marginRight: 12 },
   groupIconEmoji: { fontSize: 22 },
   groupInfo: { flex: 1 },
   nameLine: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 },
-  cardTitle: { fontSize: 15, fontWeight: '700', color: '#0F172A', flex: 1 },
-  liveChip: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#DCFCE7', paddingHorizontal: 7, paddingVertical: 3, borderRadius: 8, gap: 4 },
-  liveDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#22C55E' },
-  liveText: { fontSize: 10, fontWeight: '800', color: '#16A34A' },
-  memberCount: { fontSize: 13, color: '#94A3B8', fontWeight: '500' },
-  joinButton: { backgroundColor: '#EFF6FF', paddingVertical: 9, paddingHorizontal: 16, borderRadius: 12 },
-  joinText: { fontSize: 13, fontWeight: '800', color: '#2563EB' },
+  cardTitle: { fontSize: 15, fontWeight: '700', color: '#1C1C18', flex: 1 },
+  liveChip: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#DEE5CF', paddingHorizontal: 7, paddingVertical: 3, borderRadius: 8, gap: 4 },
+  liveDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#424939' },
+  liveText: { fontSize: 10, fontWeight: '800', color: '#171D10' },
+  memberCount: { fontSize: 13, color: '#807474', fontWeight: '500' },
+  joinButton: { backgroundColor: '#F3DEDD', paddingVertical: 9, paddingHorizontal: 16, borderRadius: 12 },
+  joinText: { fontSize: 13, fontWeight: '800', color: '#241919' },
 
   // Professional cards
-  profAvatarCircle: { width: 46, height: 46, borderRadius: 23, backgroundColor: '#0F172A', alignItems: 'center', justifyContent: 'center', marginRight: 14 },
-  profAvatarInitials: { fontSize: 16, fontWeight: '800', color: '#F8FAFC' },
+  profAvatarCircle: { width: 46, height: 46, borderRadius: 23, backgroundColor: '#261A1A', alignItems: 'center', justifyContent: 'center', marginRight: 14 },
+  profAvatarInitials: { fontSize: 16, fontWeight: '800', color: '#FCF9F3' },
   profInfo: { flex: 1 },
-  profRole: { fontSize: 13, color: '#64748B', marginBottom: 8, fontWeight: '500' },
+  profRole: { fontSize: 13, color: '#807474', marginBottom: 8, fontWeight: '500' },
   availabilityChip: { alignSelf: 'flex-start', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8 },
-  availableNowChip: { backgroundColor: '#DCFCE7' },
-  availableLaterChip: { backgroundColor: '#F1F5F9' },
+  availableNowChip: { backgroundColor: '#DEE5CF' },
+  availableLaterChip: { backgroundColor: '#F0EEE8' },
   availabilityText: { fontSize: 11, fontWeight: '700' },
-  availableNowText: { color: '#16A34A' },
-  availableLaterText: { color: '#64748B' },
-  messageButton: { backgroundColor: '#F1F5F9', paddingVertical: 9, paddingHorizontal: 14, borderRadius: 12 },
-  messageButtonText: { color: '#0F172A', fontWeight: '800', fontSize: 13 },
+  availableNowText: { color: '#171D10' },
+  availableLaterText: { color: '#807474' },
+  messageButton: { backgroundColor: '#F0EEE8', paddingVertical: 9, paddingHorizontal: 14, borderRadius: 12 },
+  messageButtonText: { color: '#1C1C18', fontWeight: '800', fontSize: 13 },
 });
